@@ -1,15 +1,21 @@
 import Ember from 'ember';
-
-var Band = Ember.Object.extend({
-  name: ''
-});
+import Band from '../models/band';
 
 export default Ember.Route.extend({
   model: function () {
-    var ledZeppelin = Band.create({ name: 'Led Zepplin' });
-    var pearlJam = Band.create({ name: 'Pearl Jam' });
-    var fooFighters = Band.create({ name: 'Foo Fighters' });
+    return this.store.findAll('band');
+  },
+  actions: {
+    didTransition: function () {
+      document.title = 'Bands - Rock & Roll';
+    },
+    createBand: function () {
+      var name = this.get('controller').get('name');
+      var band = Band.create({ name: name });
 
-    return [ledZeppelin, pearlJam, fooFighters];
+      this.modelFor('bands').pushObject(band);
+      this.get('controller').set('name', '');
+      this.transitionTo('bands.band.songs', band);
+    }
   }
 });

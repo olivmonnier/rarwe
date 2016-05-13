@@ -33,3 +33,49 @@
 .band-link.active .pointer {
   display: block;
 }
+
+.new-band {
+  width: 82%;
+}
+
+.new-band-button {
+  float: right;
+  padding: 3px 10px;
+}
+
+.new-song {
+  width: 50%;
+}
+
+.new-song-button {
+  margin-left: 20px;
+}
+
+.rating-panel {
+  float: right;
+}
+
+.page-header a:hover,
+.page-header a:focus,
+.page-header a:visited {
+  text-decoration: none;
+}
+
+.band-info {
+  margin-top: 20px;
+}
+
+.nav-tabs > li > a.active
+.nav-tabs > li > a.active:hover,
+.nav-tabs > li > a.active:focus,
+.nav-tabs > li > a.active:visited {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.band-description-header {
+  margin-bottom: 20px;
+}
