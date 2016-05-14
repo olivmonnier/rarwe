@@ -1,5 +1,6 @@
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import ENV from '../config/environment';
 
 export default JSONAPIAdapter.extend({
-  host: 'http://json-api.rockandrollwithemberjs.com'
+  host: ENV.apiHost
 });
