@@ -1,9 +1,11 @@
 import Ember from 'ember';
-import Band from '../models/band';
+import wait from '../utils/wait';
 
 export default Ember.Route.extend({
   model: function () {
-    return this.store.findAll('band');
+    var bands = this.store.findAll('band');
+
+    return wait(bands, 3 * 1000);
   },
   actions: {
     didTransition: function () {
@@ -17,7 +19,7 @@ export default Ember.Route.extend({
 
       band.save().then(function () {
         controller.set('name', '');
-        route.transitionTo('bands.band.songs', band)
+        route.transitionTo('bands.band.songs', band);
       });
     }
   }

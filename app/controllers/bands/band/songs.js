@@ -1,6 +1,11 @@
 import Ember from 'ember';
+import { capitalize } from '../../../helpers/capitalize';
 
 export default Ember.Controller.extend({
+  queryParams: {
+    sortBy: 'sort',
+    searchTerm: 's',
+  },
   songCreationStarted: false,
   title: '',
   isAddButtonDisabled: Ember.computed('title', function () {
@@ -29,6 +34,11 @@ export default Ember.Controller.extend({
       return song.get('title').toLowerCase().indexOf(searchTerm) !== -1;
     });
   }),
+  newSongPlaceholder: Ember.computed('model.name', function () {
+    var bandName = this.get('model.name');
+
+    return `New ${capitalize(bandName)} song`;
+  }),
   actions: {
     enableSongCreation: function () {
       this.set('songCreationStarted', true);
@@ -42,9 +52,6 @@ export default Ember.Controller.extend({
       }
       song.set('rating', rating);
       return song.save();
-    },
-    setSorting: function (option) {
-      this.set('sortBy', option);
     }
   }
 });
