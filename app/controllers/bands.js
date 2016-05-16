@@ -1,8 +1,7 @@
 import Ember from 'ember';
+const { Controller, computed } = Ember;
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   name: '',
-  isAddButtonDisabled: Ember.computed('name', function () {
-    return Ember.isEmpty(this.get('name'));
-  })
+  isAddButtonDisabled: computed.empty('name')
 });
