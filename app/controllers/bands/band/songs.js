@@ -48,8 +48,9 @@ export default Ember.Controller.extend({
           rating = params.rating;
 
       if (song.get('rating') === rating) {
-        rating = 0;
+        rating = null;
       }
+      
       song.set('rating', rating);
       return song.save();
     }
